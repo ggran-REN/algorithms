@@ -12,19 +12,15 @@ ex) limit([1,2,3,4,5], None, 3) = [1,2,3]
 Complexity = O(n)
 """
 
-def limit(arr, min_lim = None, max_lim = None):
+
+def limit(arr, min_lim=None, max_lim=None):
+    if min_lim is None:
+        min_lim = float('-Inf')
+    if max_lim is None:
+        max_lim = float('Inf')
     result = []
-    if min_lim == None:
-        for i in arr:
-            if i<= max_lim:
-                result.append(i)
-    elif max_lim == None:
-        for i in arr:
-            if i >= min_lim:
-                result.append(i)
-    else:
-        for i in arr:
-            if i >= min_lim and i <= max_lim:
-                result.append(i)
+    for i in arr:
+        if min_lim <= i <= max_lim:
+            result.append(i)
 
     return result
